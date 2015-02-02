@@ -80,10 +80,10 @@ static int const kMGBadgeViewTag = 9876;
         _badgeValue = badgeValue;
         
         if(badgeValue != 0 || _displayIfZero) {
-            [self mg_updateBadgeViewSize];
+            [self kn_updateBadgeViewSize];
         
             if(_position == MGBadgePositionBest)
-                [self mg_updateBadgeViewPosition];
+                [self kn_updateBadgeViewPosition];
         
         } else {
             self.frame = CGRectZero;
@@ -96,7 +96,7 @@ static int const kMGBadgeViewTag = 9876;
 - (void)setPosition:(MGBadgePosition)position {
     if(_position != position) {
         _position = position;
-        [self mg_updateBadgeViewPosition];
+        [self kn_updateBadgeViewPosition];
         [self setNeedsDisplay];
     }
 }
@@ -106,7 +106,7 @@ static int const kMGBadgeViewTag = 9876;
         _minDiameter = minDiameter;
         
         if(_position == MGBadgePositionBest)
-            [self mg_updateBadgeViewPosition];
+            [self kn_updateBadgeViewPosition];
         
         [self setNeedsDisplay];
     }
@@ -138,7 +138,7 @@ static int const kMGBadgeViewTag = 9876;
         _outlineWidth = outlineWidth;
         
         if(_position == MGBadgePositionBest)
-            [self mg_updateBadgeViewPosition];
+            [self kn_updateBadgeViewPosition];
         
         [self setNeedsDisplay];
     }
@@ -148,10 +148,10 @@ static int const kMGBadgeViewTag = 9876;
     if(_font != font) {
         _font = font;
         
-        [self mg_updateBadgeViewSize];
+        [self kn_updateBadgeViewSize];
         
         if(_position == MGBadgePositionBest)
-            [self mg_updateBadgeViewPosition];
+            [self kn_updateBadgeViewPosition];
 
         
         [self setNeedsDisplay];
@@ -164,10 +164,10 @@ static int const kMGBadgeViewTag = 9876;
         
         if(_badgeValue == 0) {
             if(_displayIfZero) {
-                [self mg_updateBadgeViewSize];
+                [self kn_updateBadgeViewSize];
                 
                 if(_position == MGBadgePositionBest)
-                    [self mg_updateBadgeViewPosition];
+                    [self kn_updateBadgeViewPosition];
             } else {
                 self.frame = CGRectZero;
             }
@@ -177,7 +177,7 @@ static int const kMGBadgeViewTag = 9876;
 
 #pragma mark - Private methods
 
-- (void)mg_updateBadgeViewSize {
+- (void)kn_updateBadgeViewSize {
     //Calculate badge bounds
     CGSize numberSize = [[NSString stringWithFormat:@"%ld", (long)_badgeValue] sizeWithAttributes:@{NSFontAttributeName: _font}];
     
@@ -188,7 +188,7 @@ static int const kMGBadgeViewTag = 9876;
 }
 
 
-- (void)mg_updateBadgeViewPosition {
+- (void)kn_updateBadgeViewPosition {
     CGRect superviewFrame = self.superview.frame;
     CGSize badgeSize = self.bounds.size;
     
